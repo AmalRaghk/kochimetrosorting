@@ -13,4 +13,5 @@ def insertion_sort(data):
     return data
 
 print(insertion_sort(data))
+data.to_csv('output.csv',index=False)
     
