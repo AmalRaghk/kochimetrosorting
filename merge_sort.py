@@ -45,6 +45,5 @@ south = s.get_group('south')
 north_out = merge_sort(north)
 south_out = merge_sort(south)
 
-# Write the sorted north and south dataframes to CSV files.
-north_out.to_csv('north_out.csv', index=False)
-south_out.to_csv('south_out.csv', index=False)
+print(north_out.iloc[-1])
+print(south_out.iloc[-1])
