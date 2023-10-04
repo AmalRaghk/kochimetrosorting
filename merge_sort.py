@@ -23,7 +23,6 @@ def merge(left, right):
       final = final._append(right.iloc[j], ignore_index=True)
       j += 1
 
-  # Handle the case where either left or right is empty.
   if i < len(left):
     final = final._append(left.iloc[i:], ignore_index=True)
   elif j < len(right):
@@ -31,19 +30,27 @@ def merge(left, right):
 
   return final
 
-# Read the data from the CSV file.
+
 data = pd.read_csv("./data.csv")
 
-# Group the data by zone.
+
 s = data.groupby('zone')
 
-# Get the north and south dataframes.
-north = s.get_group('north')
-south = s.get_group('south')
 
-# Sort the north and south dataframes.
+north = s.get_group('North')
+south = s.get_group('South')
+east=s.get_group('East')
+west=s.get_group('West')
+
+
 north_out = merge_sort(north)
 south_out = merge_sort(south)
+west_out  = merge_sort(west)
+east_out = merge_sort(east)
 
 print(north_out.iloc[-1])
 print(south_out.iloc[-1])
+north_out.to_csv('north.csv',index=False)
+south_out.to_csv('south.csv',index=False)
+west_out.to_csv('east.csv',index=False)
+east_out.to_csv('west.csv',index=False)
