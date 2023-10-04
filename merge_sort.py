@@ -34,13 +34,13 @@ def merge(left, right):
 data = pd.read_csv("./data.csv")
 
 
-s = data.groupby('zone')
+grouped_data = data.groupby('zone')
 
 
-north = s.get_group('North')
-south = s.get_group('South')
-east=s.get_group('East')
-west=s.get_group('West')
+north = grouped_data.get_group('North')
+south = grouped_data.get_group('South')
+east=grouped_data.get_group('East')
+west=grouped_data.get_group('West')
 
 
 north_out = merge_sort(north)
